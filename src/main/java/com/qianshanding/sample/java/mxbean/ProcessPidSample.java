@@ -3,7 +3,7 @@ package com.qianshanding.sample.java.mxbean;
 import java.lang.management.ManagementFactory;
 
 /**
- * 通过MXBean获取pid
+ * 通过MXBean获取当前系统的pid
  * Created by fish on 2017/3/15.
  */
 public class ProcessPidSample {
