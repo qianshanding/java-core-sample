@@ -10,14 +10,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 执行linux命令
  * Created by fish on 2017/3/15.
  */
 public class ExecCmdSample {
     public static void main(String[] args) throws Exception {
+        String command = "ls -l";
         List<String> cmdWrapper = new ArrayList<String>();
+        String[] cmds = command.split(" ");
         //空格之间分开
-        cmdWrapper.add("ls");
-        cmdWrapper.add("-l");
+        for (String cmd : cmds) {
+            cmdWrapper.add(cmd);
+        }
         Map<String, String> environment = new HashMap<>();
         Process process = launchProcess(cmdWrapper, environment);
 
@@ -36,7 +40,7 @@ public class ExecCmdSample {
         System.out.println(sb.toString());
     }
 
-    protected static java.lang.Process launchProcess(final List<String> cmdlist,
+    protected static Process launchProcess(final List<String> cmdlist,
                                                      final Map<String, String> environment) throws IOException {
         ProcessBuilder builder = new ProcessBuilder(cmdlist);
         builder.redirectErrorStream(true);
